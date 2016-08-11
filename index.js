@@ -174,7 +174,7 @@ class MemcacheCacheDriver {
     return new Promise((resolve, reject) => {
       this._driver.increment(key, 1, (error, res) => {
         if (error === 'NOT_FOUND') {
-          this._driver.set(key, 1, function () {
+          this._driver.set(key, 1, () => {
           }, this._maxAge);
           debug('inc', key, '=>', 1);
           return resolve(1);
@@ -203,7 +203,7 @@ class MemcacheCacheDriver {
     return new Promise((resolve, reject) => {
       this._driver.decrement(key, 1, (error, res) => {
         if (error === 'NOT_FOUND') {
-          this._driver.set(key, -1, function () {
+          this._driver.set(key, -1, () => {
           }, this._maxAge);
           debug('dec', key, '=>', -1);
           return resolve(-1);
